@@ -30,7 +30,7 @@ export default class App extends Component {
         {this.state.jobCount === 0 ?
           <NoJob />
           :
-          Array.from(Array(this.state.jobCount)).map((_, i) => <Job number={i+1} />)
+          Array.from(Array(this.state.jobCount)).map((_, i) => <Job key={i} number={i+1} />)
         }
       </div>
     )

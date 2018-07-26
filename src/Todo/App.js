@@ -1,36 +1,37 @@
-import React, {Component} from "react"
-import {Button, ListGroupItem, ListGroup} from "react-bootstrap"
+import React, { Component } from 'react';
+import { Button, ListGroupItem, ListGroup } from 'react-bootstrap';
 
 export default class App extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      data: []
-    }
+  state = {
+    data: []
   }
 
   handleClick = () => {
     const p = prompt();
-    this.setState(({data}) => {
-      data.push(p)
-      return {data}
-    })
+    this.setState(({ data }) => ({ data: [...data, p] }));
+  }
+
+  remove = (position) => {
+    this.setState(({ data }) => {
+      data.splice(position, 1);
+      return { data };
+    });
   }
 
   render() {
-    const list = [...this.state.data]
-
-    if (list.length === 0) {
-      list.push(<i>Nothing added</i>)
-    }
+    const { data } = this.state;
 
     return (
       <div>
         <ListGroup>
-          {list.map((item, i) =>
-            <ListGroupItem key={i}>{item}</ListGroupItem>)
-          }
+          {data.length === 0 ? (
+            <ListGroupItem><i>Nothing added</i></ListGroupItem>
+          ) : data.map((item, i) => (
+            <ListGroupItem key={i}>
+              {item}
+              <a onClick={() => this.remove(i)} style={{ float: 'right' }}>Remove</a>
+            </ListGroupItem>
+          ))}
         </ListGroup>
         <Button onClick={this.handleClick}>Add</Button>
       </div>

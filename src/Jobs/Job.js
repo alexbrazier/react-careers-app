@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {Button, ButtonGroup, FormGroup, ControlLabel, FormControl, Panel} from "react-bootstrap";
+import {FormGroup, ControlLabel, FormControl, Panel} from "react-bootstrap";
 import "./Job.css";
 
 const Job = ({ number }) => (
@@ -12,8 +12,9 @@ const Job = ({ number }) => (
         <FormControl
           componentClass="select"
           placeholder="select"
+          defaultValue="select"
         >
-          <option disabled selected>select</option>
+          <option disabled value="select">select</option>
           <option value="design">Designer</option>
           <option value="software">Software Engineer</option>
         </FormControl>

@@ -10,8 +10,9 @@ const NoJob = () => (
         <FormControl
           componentClass="select"
           placeholder="select"
+          defaultValue="select"
         >
-          <option disabled selected>select</option>
+          <option disabled value="select">select</option>
           <option value="unemployed">Unemployed</option>
           <option value="other">Other</option>
         </FormControl>
